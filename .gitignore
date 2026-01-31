@@ -1,0 +1,19 @@
+# Video folder and thumbnail (per user request)
+vid/
+thumbnail.png
+
+# Python bytecode
+__pycache__/
+*.pyc
+
+# Output and data folders
+cropped_video_data/
+Video_Test_Data/
+final_config/
+reconstructions/
+Test_Images/
+
+# Virtual environments
+.env
+venv/
+.venv/

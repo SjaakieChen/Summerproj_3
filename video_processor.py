@@ -78,13 +78,7 @@ def save_first_frame_comparison(frame, original_frame, output_dir):
     
     # Plot processed frame
     plt.subplot(122)
-    
-    # Apply the same contrast enhancement as the final slices for consistency
-    auto_contrast = VISUALIZATION_CONFIG.get('auto_contrast', False)
-    percentiles = VISUALIZATION_CONFIG.get('contrast_percentiles', (0, 100))
-    vmin, vmax = (np.percentile(frame, percentiles) if auto_contrast else (None, None))
-    
-    plt.imshow(frame, cmap='gray', vmin=vmin, vmax=vmax)
+    plt.imshow(frame, cmap='gray')
     plt.colorbar()
     plt.title('Processed Frame for Reconstruction')
     plt.axis('off')

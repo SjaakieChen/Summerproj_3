@@ -67,34 +67,27 @@ def save_visualization_slices(volume, output_path):
         volume (numpy.ndarray): Reconstructed volume
         output_path (Path): Path to save visualizations (parent directory)
     """
-    # Get contrast settings from config
-    auto_contrast = VISUALIZATION_CONFIG.get('auto_contrast', False)
-    percentiles = VISUALIZATION_CONFIG.get('contrast_percentiles', (0, 100))
-    
     # Plot and save slices
     plt.figure(figsize=(15, 5))
     
     # YZ Slice
     plt.subplot(131)
     slice_yz = volume[volume.shape[0]//2, :, :]
-    vmin, vmax = (np.percentile(slice_yz, percentiles) if auto_contrast else (None, None))
-    plt.imshow(slice_yz, cmap='gray', vmin=vmin, vmax=vmax)
+    plt.imshow(slice_yz, cmap='gray')
     plt.title('YZ Slice')
     plt.colorbar()
     
     # XZ Slice
     plt.subplot(132)
     slice_xz = volume[:, volume.shape[1]//2, :]
-    vmin, vmax = (np.percentile(slice_xz, percentiles) if auto_contrast else (None, None))
-    plt.imshow(slice_xz, cmap='gray', vmin=vmin, vmax=vmax)
+    plt.imshow(slice_xz, cmap='gray')
     plt.title('XZ Slice')
     plt.colorbar()
     
     # XY Slice
     plt.subplot(133)
     slice_xy = volume[:, :, volume.shape[2]//2]
-    vmin, vmax = (np.percentile(slice_xy, percentiles) if auto_contrast else (None, None))
-    plt.imshow(slice_xy, cmap='gray', vmin=vmin, vmax=vmax)
+    plt.imshow(slice_xy, cmap='gray')
     plt.title('XY Slice')
     plt.colorbar()
     

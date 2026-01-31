@@ -1,5 +1,7 @@
 import sys
 import os
+import os
+os.environ["PATH"] = r"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\libnvvp;" + os.environ.get("PATH", "")
 # Prune the path to avoid using the TIGRE version from the wrong project.
 # This is a temporary fix; the root cause is likely a PYTHONPATH issue
 # or an editable install pointing to the wrong location.
@@ -149,11 +151,16 @@ class VideoCropper:
             
         # Create timestamped output directory
         timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
-        self.output_dir = Path("reconstructions") / f"reconstruction_{timestamp}"
+        base_name = os.path.splitext(os.path.basename(self.video_path))[0]
+        filter_type = RECONSTRUCTION_CONFIG['filter_type']
+        threshold = RECONSTRUCTION_CONFIG['stl_threshold']
+        mask_status = "maskTrue" if RECONSTRUCTION_CONFIG.get('apply_circular_mask', False) else "maskFalse"
+        
+        # Create the new directory structure
+        self.output_dir = Path("final_config") / f"{base_name}_{filter_type}_{threshold}_{mask_status}_{timestamp}"
         os.makedirs(self.output_dir, exist_ok=True)
         
         # Get output filename
-        base_name = os.path.splitext(os.path.basename(self.video_path))[0]
         output_path = self.output_dir / f"{base_name}_cropped.mp4"
         
         # Calculate square dimensions based on line length
@@ -311,4 +318,4 @@ def main():
         print("No video was cropped. Exiting...")
 
 if __name__ == "__main__":
-    main() 
+    main()

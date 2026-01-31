@@ -6,18 +6,18 @@ Configuration parameters for tomographic reconstruction.
 RECONSTRUCTION_CONFIG = {
     # Filter type for FDK reconstruction.
     # Available filters in TIGRE: 'ram_lak', 'shepp_logan', 'cosine', 'hamming', 'hann'
-    'filter_type': 'shepp_logan',  # Using Shepp-Logan to reduce ring artifacts
-    'stl_threshold': 0.4,      # Threshold for STL conversion (0-1) 0.5
+    'filter_type': 'hamming',  # Using Shepp-Logan to reduce ring artifacts
+    'stl_threshold': 0.3,      # Threshold for STL conversion (0-1) 0.5
     'apply_circular_mask': True #Apply a circular mask to projections
 }
 
 # Geometry parameters
 GEOMETRY_CONFIG = {
-    'image_size': 200,         # Size of the reconstructed volume (cubic) #150
-    'detector_size': 200,      # Size of the detector (square) #150
-    'DSD': 628,               # Distance Source Screen (mm) #398
-    'DSO': 456,               # Distance Source Object (mm) #278
-    'pixel_size': 1.0,        # Detector pixel size (mm)
+    'image_size': 200,         # Size of the reconstructed volume (cubic) #200
+    'detector_size': 200,      # Size of the detector (square) #200
+    'DSD': 628,               # Distance Source Screen (mm) #628
+    'DSO': 456,               # Distance Source Object (mm) #456
+    'pixel_size': 1.0,        # Detector pixel size (mm) #1.0
 }
 
 # Video processing parameters
