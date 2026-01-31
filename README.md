@@ -1,6 +1,6 @@
-# Micro-CT Tomographic Reconstruction Pipeline
+# Shadow CT Reconstruction
 
-A micro-CT / tomographic reconstruction pipeline that reconstructs 3D volumes from video of a rotating object. Extracts projection frames from video, performs FDK (Feldkamp-Davis-Kress) reconstruction using TIGRE, and exports results in multiple formats.
+A pipeline that reconstructs 3D objects from their shadows at all angles. Records video of a rotating object against a backlight, extracts projection frames, and performs FDK (Feldkamp-Davis-Kress) reconstruction using TIGRE. Exports OME-TIFF and STL for viewing in any 3D viewer.
 
 ## Features
 
